@@ -1,6 +1,8 @@
+Postavljanje projekta
+
 Kreiranje datoteke na desktopu
-otvaranje u VS code
-CTRL + J
+  otvaranje u VS code
+  CTRL + J
 
 2. git clone https://github.com/LeniJuresa/RAPS.git
 
