@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
   const mapa = L.map("mapa").setView([0, 0], 2);
 
   L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
@@ -12,10 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
       className: "iss-icon",
       html: "🛰️",
       iconSize: [42, 42],
-      iconAnchor: [16, 16],
+      iconAnchor: [8, 8],
     }),
   }).addTo(mapa);
-
 
   const points = [];
 
@@ -26,16 +24,15 @@ document.addEventListener("DOMContentLoaded", function () {
     dashArray: "5,5",
   }).addTo(mapa);
 
-
   let firstTime = true;
   async function updateISS() {
     const response = await fetch("/iss");
     const data = await response.json();
-    const lat   = data.lat;
-    const lon   = data.lon;
-    const alt   = data.alt;
+    const lat = data.lat;
+    const lon = data.lon;
+    const alt = data.alt;
     const speed = data.speed;
- 
+
     document.getElementById("lat").textContent = lat;
     document.getElementById("lon").textContent = lon;
     document.getElementById("alt").textContent = alt;
@@ -55,15 +52,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     polyline.setLatLngs(points);
 
-
     if (firstTime) {
       mapa.setView([lat, lon], 4);
       firstTime = false;
     }
   }
 
-
   updateISS();
-  setInterval(updateISS, 1000);
-
+  setInterval(updateISS, 3000);
 });
