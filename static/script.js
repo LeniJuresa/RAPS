@@ -16,17 +16,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }),
   }).addTo(mapa);
 
-  const trail = L.layerGroup().addTo(mapa);
+
   const points = [];
 
+  const polyline = L.polyline([], {
+    color: "#4fc3f7",
+    weight: 2,
+    opacity: 0.6,
+    dashArray: "5,5",
+  }).addTo(mapa);
+
+
   let firstTime = true;
-
   async function updateISS() {
-
- 
     const response = await fetch("/iss");
     const data = await response.json();
- 
     const lat   = data.lat;
     const lon   = data.lon;
     const alt   = data.alt;
@@ -49,15 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (points.length > 100) {
       points.shift();
     }
-    trail.clearLayers();
-    if (points.length > 1) {
-      L.polyline(points, {
-        color: "#4fc3f7",
-        weight: 2,
-        opacity: 0.6,
-        dashArray: "5,5",
-      }).addTo(trail);
-    }
+    polyline.setLatLngs(points);
 
 
     if (firstTime) {
