@@ -14,7 +14,6 @@ def get_iss_data():
         'speed': round(data['velocity'])
     }
 
-# i am testing github push pull test
 
 @app.route('/')
 def index():
