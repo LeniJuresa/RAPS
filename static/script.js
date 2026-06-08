@@ -31,12 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const lat = data.lat;
     const lon = data.lon;
     const alt = data.alt;
-    const speed = data.speed;
+    const vel = data.vel;
 
     document.getElementById("lat").textContent = lat;
     document.getElementById("lon").textContent = lon;
     document.getElementById("alt").textContent = alt;
-    document.getElementById("brz").textContent = speed.toLocaleString();
+    document.getElementById("vel").textContent = vel;
 
     const loadingElements = document.querySelectorAll(".loading");
     for (let i = 0; i < loadingElements.length; i++) {

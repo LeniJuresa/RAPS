@@ -11,7 +11,7 @@ def get_iss_data():
         'lat': round(data['latitude'], 4),
         'lon': round(data['longitude'], 4),
         'alt': round(data['altitude'], 0),
-        'speed': round(data['velocity'])
+        'vel': round(data['velocity'])
     }
 
 
